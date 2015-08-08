@@ -86,7 +86,7 @@ def reduce_prime_candidates_eratosthenes(prime_candidates):
 def generate_primes_sieve_of_sundaram(max_n):
     numbers = xrange(1,int(max_n / 2))
     non_prime = {}
-    for j in xrange(1,max_n):
+    for j in xrange(1,int(max_n / 3)):
         for i in xrange(1,j + 1):
             eliminate = i + j + 2 * i * j
             non_prime[eliminate] = False
