@@ -7,6 +7,7 @@ More specifically, it implements the following algorithms
 """
 
 import math
+import time
 
 def generate_primes(max_n,sieve="atkin"):
     if(sieve=="atkin"):
@@ -93,3 +94,13 @@ def generate_primes_sieve_of_sundaram(max_n):
     primes = [2]
     primes.extend([2 * x + 1 for x in numbers if non_prime.get(x,True)])
     return primes
+
+def time_prime_generation():
+    time.clock()
+    generate_primes_sieve_of_atkin(10000)
+    print(time.clock())
+    generate_primes_sieve_of_eratosthenes(10000)
+    print(time.clock())
+    generate_primes_sieve_of_sundaram(10000)
+    print(time.clock())
+
