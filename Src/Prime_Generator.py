@@ -84,6 +84,17 @@ def reduce_prime_candidates_eratosthenes(prime_candidates):
             yield number
 
 def generate_primes_sieve_of_sundaram(max_n):
-    return None
+    numbers = xrange(1,int(max_n / 2))
+    non_prime = {}
+    for j in xrange(1,max_n):
+        for i in xrange(1,j + 1):
+            eliminate = i + j + 2 * i * j
+            non_prime[eliminate] = True
+    primes = [2]
+    primes.extend([2 * x + 1 for x in numbers if non_prime.get(x,False)])
+    return primes
 
-print(generate_primes_sieve_of_eratosthenes(8920) == generate_primes_sieve_of_atkin(8920))
+
+#print(generate_primes_sieve_of_eratosthenes(8920) == generate_primes_sieve_of_atkin(8920))
+
+print(generate_primes_sieve_of_sundaram(8920))
