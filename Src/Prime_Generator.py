@@ -93,6 +93,3 @@ def generate_primes_sieve_of_sundaram(max_n):
     primes = [2]
     primes.extend([2 * x + 1 for x in numbers if non_prime.get(x,True)])
     return primes
-
-
-
