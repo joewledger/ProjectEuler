@@ -60,6 +60,11 @@ def flip_entries_atkin(sieve):
 
 
 def reduce_prime_candidates_atkin(condensed_prime_candidates):
+    """
+    Reduces the list of Prime candidates from the Preprocessing step of the Sieve of Atkin Algorithm into the final list.
+    Rejects any prime that is a multiple of a square of a previous prime.
+    Explanation of algorithm is at https://en.wikipedia.org/wiki/Sieve_of_Atkin
+    """
     marked_squares = []
     for candidate in condensed_prime_candidates:
         if(not any(candidate % x == 0 for x in marked_squares)):
@@ -67,7 +72,18 @@ def reduce_prime_candidates_atkin(condensed_prime_candidates):
             yield candidate
 
 def generate_primes_sieve_of_eratosthenes(max_n):
-    return None
+    prime_candidates = (True for x in xrange(2,max_n))
+    return [prime for prime in reduce_prime_candidates_eratosthenes(prime_candidates)]
+
+def reduce_prime_candidates_eratosthenes(prime_candidates):
+    marked_primes = []
+    for i,candidate in enumerate(prime_candidates):
+        number = i + 2
+        if(not any(number % x == 0 for x in marked_primes)):
+            marked_primes.append(number)
+            yield number
 
 def generate_primes_sieve_of_sundaram(max_n):
     return None
+
+print(generate_primes_sieve_of_eratosthenes(8920) == generate_primes_sieve_of_atkin(8920))
