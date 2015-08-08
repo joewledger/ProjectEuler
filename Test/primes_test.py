@@ -6,7 +6,10 @@ def first_test():
     for row in reader.readlines():
         for entry in row.strip().split(" "):
             if(entry != ""):
-                primes.append(entry)
-    assert p_gen.generate_primes_sieve_of_atkin(7920) == primes
-    assert p_gen.generate_primes_sieve_of_sundaram(7920) == primes
-    assert p_gen.generate_primes_sieve_of_eratosthenes(7920) == primes
+                primes.append(int(entry))
+    atkin_primes = p_gen.generate_primes(7920,sieve="atkin")
+    sundaram_primes = p_gen.generate_primes(7920,sieve="sundaram")
+    eratosthenes_primes = p_gen.generate_primes(7920,sieve="eratosthenes")
+    assert atkin_primes == primes
+    assert sundaram_primes == primes
+    assert eratosthenes_primes == primes
