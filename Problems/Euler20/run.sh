@@ -1,3 +1,3 @@
 #!/bin/bash
-gcc Euler20.c -o Euler20
-./Euler20
+gcc $1/Euler20.c -o $1/Euler20
+./$1/Euler20

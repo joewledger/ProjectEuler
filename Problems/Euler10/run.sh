@@ -1,2 +1,2 @@
 #!/bin/bash
-python Euler10.py
+python $1/Euler10.py

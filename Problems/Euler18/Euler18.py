@@ -1,7 +1,7 @@
 #Project Euler Problem 18/67
 #Finds the largest possible sum of all the paths of a Triangle
 
-file = open('triangle.txt','r')
+f = open('triangle.txt','r')
 textS = file.readlines()
 arrayN = []
 for row in range(0, len(textS)):
@@ -23,4 +23,5 @@ for row in range(1, len(textS)):
 			weightedValues[col] = arrayN[row][col] + max(weightedValuesP[col - 1], weightedValuesP[col])
 	weightedValuesP = weightedValues
 
+f.close()
 print(max(weightedValues))
