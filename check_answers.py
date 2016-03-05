@@ -15,19 +15,17 @@ def main():
         prob_num = parse_problem_number(path)
         if "run.sh" in os.listdir(path):
             
-
             p = multiprocessing.Process(target=run_problem, name="",args=(path,prob_num,answer_dict,))
             p.start()
-
             p.join(max_seconds)
-
             time.sleep(max_seconds)
             if p.is_alive():
-                terminate_euler_process(path,prob_num, p)
+                terminate_process(path,prob_num, p)
+
         else:
             pretty_print_status(prob_num, "No run.sh script found")
 
-def terminate_euler_process(path,prob_num,process):
+def terminate_process(path,prob_num,process):
     pretty_print_status(prob_num,"Terminated early")
     process.terminate()
     process.join()
