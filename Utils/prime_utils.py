@@ -17,6 +17,17 @@ class Prime_Stream:
     def get_stored_primes(self):
         return self.stored_primes
 
+    def get_primes_under_n(self,n):
+        if(n < self.stored_primes[-1]):
+            i = 0
+            while(self.stored_primes[i] < n):
+                i += 1
+            return self.stored_primes[:i]
+        else:
+            while(n > self.stored_primes[-1]):
+                self.__getitem__(len(self.stored_primes))
+            return self.stored_primes[:-1]
+
     def __getitem__(self,index):
         i = self.stored_primes[-1] + 1
         while(len(self.stored_primes) < index + 1):

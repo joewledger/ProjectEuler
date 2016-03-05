@@ -4,13 +4,19 @@ import multiprocessing
 import time
 import subprocess
 import re
+import sys
 
 
 def main():
-    max_seconds = 1
+    max_seconds = 3
     answer_dict = get_answer_dictionary()
 
     problem_dirs = [x[0] for x in os.walk("Problems")][1:]
+    if(len(sys.argv) > 1):
+        pn = sys.argv[1]
+        problem_dirs = [x for x in problem_dirs if x.endswith(pn) and not x[-len(pn) - 1].isdigit()]    
+
+
     for path in sorted(problem_dirs, key = lambda x: parse_problem_number(x)):
         prob_num = parse_problem_number(path)
         if "run.sh" in os.listdir(path):

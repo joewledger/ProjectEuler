@@ -1,27 +1,23 @@
 #Project Euler Problem 18/67
 #Finds the largest possible sum of all the paths of a Triangle
+#Dynamic Programming Approach
 
-f = open('triangle.txt','r')
-textS = file.readlines()
-arrayN = []
-for row in range(0, len(textS)):
-	arrayN.append([])
-	numb = textS[row].split(' ')
-	for col in range(0, row + 1):
-		arrayN[row].append(int(numb[col]))
-weightedValuesP = [0] * 2
-weightedValuesP[0] = arrayN[0][0]
-weightedValues = weightedValuesP
-for row in range(1, len(textS)):
-	weightedValues = [0] * (row + 1)
-	for col in range(0, row + 1):
-		if(col == 0):
-			weightedValues[col] = arrayN[row][col] + weightedValuesP[col]
-		if(col == row):
-			weightedValues[col] = arrayN[row][col] + weightedValuesP[col - 1]
-		if(col > 0 and col < row):
-			weightedValues[col] = arrayN[row][col] + max(weightedValuesP[col - 1], weightedValuesP[col])
-	weightedValuesP = weightedValues
+import os
+import sys
 
-f.close()
-print(max(weightedValues))
+if(len(sys.argv) > 1):
+    os.chdir(sys.argv[1])
+
+reader = open("triangle.txt", "rb")
+arr = [[int(y) for y in x.strip().split(" ")] for x in reader.readlines()]
+reader.close()
+
+def reduce_to_max_path(arr1,arr2):
+    arr3 = []
+    for i in xrange(0,len(arr2)):
+        best_prev = max(arr1[max(i-1,0):min(i,len(arr1) - 1) + 1])
+        new_val = arr2[i] + best_prev
+        arr3.append(new_val)
+    return arr3
+
+print(max(reduce(reduce_to_max_path,arr)))
