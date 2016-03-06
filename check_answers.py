@@ -8,7 +8,7 @@ import sys
 
 
 def main():
-    max_seconds = 3
+    max_seconds = 5
     answer_dict = get_answer_dictionary()
 
     problem_dirs = [x[0] for x in os.walk("Problems")][1:]
@@ -24,7 +24,6 @@ def main():
             p = multiprocessing.Process(target=run_problem, name="",args=(path,prob_num,answer_dict,))
             p.start()
             p.join(max_seconds)
-            time.sleep(max_seconds)
             if p.is_alive():
                 terminate_process(path,prob_num, p)
 

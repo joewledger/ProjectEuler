@@ -1,3 +1,6 @@
+import itertools
+import operator
+
 class Prime_Stream:
 
     def __init__(self):
@@ -55,6 +58,15 @@ class Prime_Utils:
             else:
                 prime_index += 1
         return factorization
+
+    def get_divisor_list(self,number):
+        divisor_set = set()
+        pf = self.prime_factorization(number)
+        for i in xrange(0,len(pf) + 1):
+            for product in [reduce(operator.mul,x,1) for x in itertools.combinations(pf,i)]:
+                divisor_set.add(product)
+        return sorted(list(divisor_set))
+        
 
     #Gets the number of divisors of a number using a generating function
     #Methodology is described at http://mathforum.org/library/drmath/view/56197.html

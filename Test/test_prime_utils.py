@@ -7,3 +7,11 @@ def test_get_num_divisors():
         nd = sum(1 for j in xrange(1, i + 1) if i % j == 0)
         nd2 = util.get_num_divisors(i)
         assert nd == nd2
+
+
+def test_get_divisor_set():
+    util = p.Prime_Utils()
+    
+    assert [1,2,4,5,10,20] == sorted(util.get_divisor_set(20))
+    assert [1,2,3,6,9,18] == sorted(util.get_divisor_set(18))
+    assert [1,3,5,15] == sorted(util.get_divisor_set(15))
