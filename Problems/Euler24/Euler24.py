@@ -1,5 +1,5 @@
-#Project Euler Problem N
-#Description
+#Project Euler Problem 24
+#Find the 1,000,000th lexicographic permutation of the digits 0,...,9
 
 import os
 import sys

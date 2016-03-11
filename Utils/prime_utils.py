@@ -11,7 +11,7 @@ class Prime_Stream:
             return number in self.stored_primes
         else:
             i = 0
-            while(self.stored_primes[i] ** 2 <= number):
+            while(self.__getitem__(i) ** 2 <= number):
                 if(number % self.stored_primes[i] == 0):
                     return False
                 i += 1
