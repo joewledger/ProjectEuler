@@ -9,9 +9,18 @@ def test_get_num_divisors():
         assert nd == nd2
 
 
-def test_get_divisor_set():
+def test_get_divisor_list():
     util = p.Prime_Utils()
     
-    assert [1,2,4,5,10,20] == sorted(util.get_divisor_set(20))
-    assert [1,2,3,6,9,18] == sorted(util.get_divisor_set(18))
-    assert [1,3,5,15] == sorted(util.get_divisor_set(15))
+    assert [1,2,4,5,10,20] == sorted(util.get_divisor_list(20))
+    assert [1,2,3,6,9,18] == sorted(util.get_divisor_list(18))
+    assert [1,3,5,15] == sorted(util.get_divisor_list(15))
+
+def test_get_perfect_numbers():
+    util = p.Prime_Utils()
+
+    perfect_gen = util.get_perfect_numbers()
+    assert 6 == perfect_gen.next()
+    assert 28 == perfect_gen.next()
+    assert 496 == perfect_gen.next()
+    assert 8128 == perfect_gen.next()

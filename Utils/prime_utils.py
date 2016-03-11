@@ -90,3 +90,10 @@ class Prime_Utils:
                     c[a_index + b_index] += a_value * b_value
             return c
         return reduce(multiply_partial_generating_functions, generating_function)
+
+    def get_perfect_numbers(self):
+        i = 0
+        while(True):
+            prime = self.prime_stream[i]
+            yield (2 ** (prime - 1)) * (2 ** prime - 1)
+            i += 1
