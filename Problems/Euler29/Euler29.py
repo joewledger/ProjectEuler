@@ -1,5 +1,5 @@
-#Project Euler Problem N
-#Description
+#Project Euler Problem 29
+#Find the number of distinct integers of the form a^b for a,b in range[2,100)
 
 lower_limit = 2
 upper_limit = 100
