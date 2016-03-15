@@ -115,9 +115,3 @@ result = str(carry[0])
 for i in range(0, len(digit)):
 	result += str(digit[i])
 print result[0:10]
-
-
-
-
-
-
