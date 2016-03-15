@@ -32,17 +32,7 @@ def is_pandigital_product(n,prime_utils):
     divisors = prime_utils.get_divisor_list(n)
     prod_multiplicands = [[n,d,n/d] for d in divisors]
     digit_length = lambda pm : sum(len(get_digit_list(l)) for l in pm)
-    #for pm in prod_multiplicands:
-    #    if(not (has_repeat_digits_list(pm) or contains_zero(pm) or digit_length(pm) < 9)):
-    #        print(pm)
-    #        return True
-    #return False
     return any(not (has_repeat_digits_list(x) or contains_zero(x) or digit_length(x) < 9) for x in prod_multiplicands)
 
 utils = p.Prime_Utils()
-#for i in xrange(1000,10000):
-#    is_pandigital_product(i,utils)
-
-
-
 print(sum(i for i in xrange(1000,10000) if is_pandigital_product(i,utils)))

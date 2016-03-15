@@ -8,7 +8,7 @@ import sys
 
 
 def main():
-    max_seconds = 5
+    max_seconds = 10
     answer_dict = get_answer_dictionary()
 
     problem_dirs = [x[0] for x in os.walk("Problems")][1:]

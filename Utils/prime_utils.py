@@ -5,10 +5,12 @@ class Prime_Stream:
 
     def __init__(self):
         self.stored_primes = [2]
+        self.prime_set = set()
+        self.prime_set.add(2)
             
     def is_prime(self,number):
         if(number < self.stored_primes[-1]):
-            return number in self.stored_primes
+            return number in self.prime_set
         else:
             i = 0
             while(self.__getitem__(i) ** 2 <= number):
@@ -34,7 +36,9 @@ class Prime_Stream:
     def __getitem__(self,index):
         i = self.stored_primes[-1] + 1
         while(len(self.stored_primes) < index + 1):
-            if(self.is_prime(i)): self.stored_primes.append(i)
+            if(self.is_prime(i)):
+                self.stored_primes.append(i)
+                self.prime_set.add(i)
             i += 1
         return self.stored_primes[index]
 
