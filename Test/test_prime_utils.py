@@ -24,3 +24,9 @@ def test_get_perfect_numbers():
     assert 28 == perfect_gen.next()
     assert 496 == perfect_gen.next()
     assert 8128 == perfect_gen.next()
+
+def test_get_fraction_lowest_common_terms():
+    util = p.Prime_Utils()
+    assert (1,2) == util.get_fraction_lowest_common_terms(49,98)
+    assert (5,7) == util.get_fraction_lowest_common_terms(35,49)
+    assert util.get_fraction_lowest_common_terms(49,98) == util.get_fraction_lowest_common_terms(4,8)

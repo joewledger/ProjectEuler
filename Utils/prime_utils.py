@@ -101,3 +101,23 @@ class Prime_Utils:
             prime = self.prime_stream[i]
             yield (2 ** (prime - 1)) * (2 ** prime - 1)
             i += 1
+
+    def get_fraction_lowest_common_terms(self,numerator,denominator):
+        n_prime_factors = self.prime_factorization(numerator)
+        d_prime_factors = self.prime_factorization(denominator)
+        final_n_factors, final_d_factors, i, j = [1],[1],0,0
+
+        while(i < len(n_prime_factors) or j < len(d_prime_factors)):
+            n_larger = n_prime_factors[min(i,len(n_prime_factors) - 1)] - d_prime_factors[min(j,len(d_prime_factors) - 1)]
+            if(n_larger == 0):
+                i += 1
+                j += 1
+            else:
+                if (n_larger < 0):
+                    final_n_factors.append(n_prime_factors[i])
+                    i += 1
+                else:
+                    final_d_factors.append(d_prime_factors[j])
+                    j += 1
+        factor_product = lambda factor_list : reduce(operator.mul, factor_list,1)
+        return factor_product(final_n_factors), factor_product(final_d_factors)

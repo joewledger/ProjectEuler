@@ -1,3 +1,25 @@
+import math
+class Big_Int:
+
+    def __init__(self,digit_list):
+        self.digit_list = digit_list
+
+    def __len__(self):
+        return len(self.digit_list)
+
+def int_to_binary_digit_list(n):
+    binary_length = int(math.log(n,2)) + 1
+    digits = []
+    for i in xrange(0,binary_length):
+        place_value = 2 ** (binary_length - i - 1)
+        if(n >= place_value):
+            digits.append(1)
+            n -= place_value
+        else:
+            digits.append(0)
+    return digits
+        
+
 def convert_int_to_digit_list(n):
     digits = []
     while(n > 0):
