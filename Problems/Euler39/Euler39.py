@@ -20,5 +20,7 @@ import math
 
 a_upper_bound = lambda p : int(p / (2 + math.sqrt(2)))
 b_remainder = lambda a,p : (p * (p - 2 * a)) % (2 * (p - a))
-num_solutions = [sum(1 for a in xrange(1,a_upper_bound(p)) if b_remainder(a,p) == 0) for p in xrange(1,1000)]
-print(num_solutions.index(max(num_solutions)) + 1)
+num_solutions = lambda p : sum(1 for a in xrange(1,a_upper_bound(p)) if b_remainder(a,p) == 0)
+
+solution_sizes = [num_solutions(p) for p in xrange(1,1000)]
+print(solution_sizes.index(max(solution_sizes)) + 1)

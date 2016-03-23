@@ -15,21 +15,17 @@ import combinatorics_utils as c_utils
 util = p.Prime_Utils()
 
 threshold = 28134
-all_linear_combinations = {}
 
 proper_divisor_sum = lambda n : sum(util.get_divisor_list(n)[:-1])
 abundant_numbers = [x for x in xrange(1,threshold) if x < proper_divisor_sum(x)]
+abundant_set = set(abundant_numbers)
 
-pn = util.get_perfect_numbers()
-perfect_numbers = [pn.next()]
-while(perfect_numbers[-1] < threshold):
-    perfect_numbers.append(pn.next())
-perfect_numbers = perfect_numbers[:-1]
+def is_abundant_sum(n,abundant_numbers):
+    i = 0
+    while(abundant_numbers[i] <= n / 2):
+        if(n - abundant_numbers[i] in abundant_set):
+            return True
+        i += 1
+    return False
 
-naturally_abundant = []
-for x in abundant_numbers:
-    if(not any(x % y == 0 for y in naturally_abundant) and not any(x % y == 0 for y in perfect_numbers)):
-        naturally_abundant.append(x)
-
-print(len(abundant_numbers))
-print(naturally_abundant)
+print(sum(x for x in xrange(1,threshold) if not is_abundant_sum(x,abundant_numbers)))
