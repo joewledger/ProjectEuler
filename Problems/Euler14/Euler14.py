@@ -8,7 +8,7 @@ for i in xrange(2,max_number + 1):
     while(not numbers[-1] in cache):
         numbers.append(next(numbers[-1]))
     c_val = cache[numbers[-1]]
-    for index, x in enumerate(reversed(numbers)):
+    for x in reversed(numbers):
         cache[x] = c_val
         c_val += 1
 
